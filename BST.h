@@ -7,7 +7,7 @@ class BST {
 		node* left;
 	};
 
-	node* root;
+	node* _root;
 	size_t _size;
 	node* insert(double key,node* ptr);
 	void remove(double key,node* ptr);

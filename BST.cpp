@@ -1,12 +1,12 @@
 #include "BST.h"
 /** default Constructor **/
 BST::BST() {
-	root = NULL;
+	_root = NULL;
 	_size = 0;
 }
 /** default Destructor  **/
 BST::~BST() {
-	freeSubtree(root);
+	freeSubtree(_root);
 	cout << "Tree Deleted." << endl;
 }
 /** this method is responsible to free an substree that passed by input **/
@@ -59,24 +59,25 @@ BST::node* BST::contains(double key,node* ptr)
 	else return contains(key, ptr->left);
 }
 /** This method is responsible to insert value to the BS Tree. **/
-void BST::insert(double key){ insert(key,root); }
-void BST::remove(double key){ remove(key,root);}
+void BST::insert(double key){ insert(key,_root); }
+void BST::remove(double key){ remove(key,_root);}
 
 /** This method is responsible to return the current size ( number of nodes in the tree ) **/
 size_t BST::size(){ return _size; }
+/** This method is responsible to return the current root data **/
 double BST::root() {
-	if(root == NULL) throw string("root is NULL.");
-	else return root->data;
+	if(_root == NULL) throw string("_root is NULL.");
+	else return _root->key;
 }
 /** This method is responsible to return true iff key can be found in the BS Tree. **/
 bool BST::contains(double key){
-	return ( contains(key,root) == NULL );
+	return ( contains(key,_root) == NULL );
 }
 double BST::parent(double key){}
 
 /** this method gets as input an key, and output her right node value in the tree **/
 double BST::right(double key){
-	node* temp = contains(key,root);
+	node* temp = contains(key,_root);
 	if(temp->right != NULL )
 		return temp->right->key;
 	else
@@ -84,7 +85,7 @@ double BST::right(double key){
 }
 /** this method gets as input an key, and output her left node value in the tree **/
 double BST::left(double key){
-	node* temp = contains(key,root);
+	node* temp = contains(key,_root);
 	if(temp->left != NULL )
 		return temp->left->key;
 	else
@@ -92,7 +93,7 @@ double BST::left(double key){
 }
 /** this method is responsible to call inorder() method in order to print the current state of the tree **/
 void BST::print(){
-	inorder(root);
+	inorder(_root);
 }
 /** This method is responsible to print the current BST in `inOrder` **/
 void BST::inorder(node* ptr)
