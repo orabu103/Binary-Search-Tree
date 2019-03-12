@@ -5,11 +5,11 @@ int main()
 	BST tree;
 	tree.insert(3);
 	tree.insert(5);
-	tree.insert(7);
+	tree.insert(-1);
 
-	cout << tree.contains(3) << endl;
 	tree.print();
-	cout << tree.size() << endl;
+	cout << "The size is: " << tree.size() << endl;
+	cout << tree.root() << endl;
 	}
 	catch (string & s) { cout << s << endl; }
 

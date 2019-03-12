@@ -36,11 +36,9 @@ BST::node* BST::insert(double key,node* ptr) {
 	{
 		ptr = allocateLeaf(key);
 		_size++;
-		cout << key << " Has been inserted to the tree." << endl;
 	}
 	else if(key > ptr->key)
 	{
-		cout << "HERE" << endl;
 		ptr->right = insert(key,ptr->right);
 	}
 	else if(key < ptr->key)
@@ -50,7 +48,7 @@ BST::node* BST::insert(double key,node* ptr) {
 	return ptr;
 }
 void BST::remove(double key,node* ptr) {
-
+	// **** NEED TO IMPLEMENT
 }
 BST::node* BST::contains(double key,node* ptr)
 {
@@ -59,7 +57,10 @@ BST::node* BST::contains(double key,node* ptr)
 	else return contains(key, ptr->left);
 }
 /** This method is responsible to insert value to the BS Tree. **/
-void BST::insert(double key){ insert(key,_root); }
+void BST::insert(double key){
+	if(_root == NULL) _root = allocateLeaf(key);
+	else insert(key,_root);
+}
 void BST::remove(double key){ remove(key,_root);}
 
 /** This method is responsible to return the current size ( number of nodes in the tree ) **/
@@ -73,7 +74,9 @@ double BST::root() {
 bool BST::contains(double key){
 	return ( contains(key,_root) == NULL );
 }
-double BST::parent(double key){}
+double BST::parent(double key){
+	// **** NEED TO IMPLEMENT
+}
 
 /** this method gets as input an key, and output her right node value in the tree **/
 double BST::right(double key){
@@ -101,7 +104,7 @@ void BST::inorder(node* ptr)
 	if(ptr != NULL)
 	{
 		inorder(ptr->left);
-		cout << ptr->key << ",";
+		cout << ptr->key << endl;
 		inorder(ptr->right);
 	}
 }
